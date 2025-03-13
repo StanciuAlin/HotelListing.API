@@ -37,3 +37,25 @@ Content-Type: application/json
 }
 
 ###
+
+
+GET {{HotelListing.Api_HostAddress}}/api/countries
+
+###
+
+@id=11
+GET {{HotelListing.Api_HostAddress}}/api/countries/{{id}}
+
+###
+
+POST {{HotelListing.Api_HostAddress}}/api/countries
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "Romania",
+  "shortName": "RO"
+}
+
+###
+
