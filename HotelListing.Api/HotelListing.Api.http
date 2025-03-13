@@ -59,3 +59,7 @@ Content-Type: application/json
 
 ###
 
+
+GET {{HotelListing.Api_HostAddress}}/api/hotels
+
+###

@@ -9,11 +9,12 @@ public class AutoMapperConfig : Profile
 {
     public AutoMapperConfig()
     {
+        CreateMap<Country, CountryDto>().ReverseMap();
         CreateMap<Country, CreateCountryDto>().ReverseMap();
         CreateMap<Country, GetCountryDto>().ReverseMap();
         CreateMap<Country, UpdateCountryDto>().ReverseMap();
-        CreateMap<Country, CountryDto>().ReverseMap();
 
         CreateMap<Hotel, HotelDto>().ReverseMap();
+        CreateMap<Hotel, CreateHotelDto>().ReverseMap();
     }
 }
