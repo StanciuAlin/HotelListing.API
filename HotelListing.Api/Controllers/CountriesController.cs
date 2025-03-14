@@ -9,6 +9,9 @@ using HotelListing.Api.Data;
 using HotelListing.Api.Models.Country;
 using AutoMapper;
 using HotelListing.Api.Contracts;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
+using HotelListing.Api.Common;
 
 namespace HotelListing.Api.Controllers;
 
@@ -62,6 +65,7 @@ public class CountriesController : ControllerBase
     // PUT: api/Countries/5
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPut("{id}")]
+    [Authorize(Roles = UserRoles.Administrator)]
     public async Task<IActionResult> PutCountry(int id, UpdateCountryDto updateCountryDto)
     {
         if (id != updateCountryDto.Id)
@@ -106,6 +110,7 @@ public class CountriesController : ControllerBase
     // POST: api/Countries
     // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
     [HttpPost]
+    [Authorize(Roles = UserRoles.Administrator)]
     public async Task<ActionResult<Country>> PostCountry(CreateCountryDto createCountryDto) // Changed from Country model to CreateCountryDto DTO model (view-model) 
                                                                                             // preventing the user from submitting data that we don't want or could harmful that could pottentially be harmful for our system
     {
@@ -124,6 +129,7 @@ public class CountriesController : ControllerBase
 
     // DELETE: api/Countries/5
     [HttpDelete("{id}")]
+    [Authorize(Roles = UserRoles.Administrator)]
     public async Task<IActionResult> DeleteCountry(int id)
     {
         var country = await _countriesRepository.GetAsync(id);
